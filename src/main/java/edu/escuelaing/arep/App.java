@@ -15,39 +15,15 @@ public class App
     {
         System.out.println( "Hello World!" );
 
-        LinkedList lista = new LinkedList();
+        LinkedList<Double> lista = new LinkedList<Double>();
         lista.add(50.2);
         lista.add(10.3);
+        lista.add(20.3);
+        lista.add(40.3);
+        lista.add(-80.3);
 
-
+        System.out.println( lista.get(-5));
         
     }
-
-    /**
-    public static void main( String[] args )
-    {
-        LinkedList<String> list=new LinkedList<String>();
-
-        //Adding elements to the Linked list
-        list.add("Steve");
-        list.add("Carl");
-        list.add("Raj");
-
-        //Adding an element to the first position
-        list.addFirst("Negan");
-
-        //Adding an element to the last position
-        list.addLast("Rick");
-
-        //Adding an element to the 3rd position
-        list.add(2, "Glenn");
-
-        //Iterating LinkedList
-        Iterator<String> iterator=list.iterator();
-        while(iterator.hasNext()){
-        System.out.println(iterator.next());
-        }
-    }
-    **/
     
 }
