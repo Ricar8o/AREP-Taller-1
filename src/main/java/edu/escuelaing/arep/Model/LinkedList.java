@@ -66,6 +66,7 @@ public class LinkedList<E> {
         }
         
     }
+    
     // GET METHODS
     public E getFirst(){
         return first.data();
@@ -75,7 +76,7 @@ public class LinkedList<E> {
         return last.data();
     } 
     
-    public int getSize(){
+    public int size(){
         return size;
     } 
 
@@ -88,8 +89,7 @@ public class LinkedList<E> {
             return x;
         }else if ( index >= -size &&  index <= -1){
             Node<E> x = last;
-            for (int i = size - 1; i > 0; i--){
-                System.out.println(x.data());
+            for (int i = -1; i > index ; i--){
                 x = x.prev();
             }
             return x;
@@ -101,6 +101,39 @@ public class LinkedList<E> {
 
     public E get(int index){
         return searchNode(index).data();
+    }
+
+
+    // REMOVE
+
+    private E unLink(Node<E> node){
+        E data = node.data();
+        Node<E> prev = node.prev();
+        Node<E> next = node.next();
+        node.setData(null);
+
+        // First 
+        if(prev == null){
+            first = next;
+        }else{
+            prev.setNext(next);
+            node.setPrev(null);
+        }
+
+        // Last
+        if(next == null){
+            last = prev;
+        }else{
+            next.setPrev(prev);
+            node.setNext(null);
+        }
+        size--;
+        return data;
+    }
+
+    public E remove(int index){
+        Node<E> dead = searchNode(index);
+        return unLink(dead);
     }
 
     

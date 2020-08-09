@@ -21,8 +21,15 @@ public class App
         lista.add(20.3);
         lista.add(40.3);
         lista.add(-80.3);
+        
+        Double sobra = lista.remove(-5);
+        System.out.println("Se fue: " + sobra);
 
-        System.out.println( lista.get(-5));
+        for(int i =0; i<lista.size();i++){
+            System.out.println( lista.get(i));
+        }
+        
+        
         
     }
     
