@@ -1,4 +1,4 @@
-package edu.escuelaing.arep.Model;
+package edu.escuelaing.arep.app.model;
 
 public class LinkedList<E> {
     private Node<E> first;
