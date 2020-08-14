@@ -1,19 +1,32 @@
 package edu.escuelaing.arep.app.model;
 
+/**
+ * Implementacion propia de LinkedList.
+ * 
+ * @author Andres Ricardo Martinez Diaz
+ * @version 1.0
+ */
 public class LinkedList<E> {
     private Node<E> first;
     private Node<E> last;
     private int size;
 
-
-    public LinkedList(){
+    /**
+     * Constructor
+     */
+    public LinkedList() {
     }
-    
-    // Link METHODS.
 
+    // LINK METHODS.
+
+    /**
+     * Metodo para enlazar un nodo al inicio.
+     * 
+     * @param value El valor que ira dentro del nuevo nodo.
+     */
     private void linkFirst(E value) {
         Node<E> f = first;
-        Node<E> newNode = new Node<>(value,null,f);
+        Node<E> newNode = new Node<>(value, null, f);
         if (f == null)
             last = newNode;
         else
@@ -23,9 +36,14 @@ public class LinkedList<E> {
         size++;
     }
 
+    /**
+     * Metodo para enlazar un nodo al final.
+     * 
+     * @param value El valor que ira dentro del nuevo nodo.
+     */
     private void linkLast(E value) {
         Node<E> ult = last;
-        Node<E> newNode = new Node<>(value,ult,null);
+        Node<E> newNode = new Node<>(value, ult, null);
         if (ult == null)
             this.first = newNode;
         else
@@ -35,6 +53,12 @@ public class LinkedList<E> {
         size++;
     }
 
+    /**
+     * Metodo para enlazar un nodo y colocarlo antes de otro.
+     * 
+     * @param value Valor del nuevo nodo.
+     * @param sigu  Nodo que ira despues del nuevo nodo.
+     */
     private void linkBefore(E value, Node<E> sigu) {
         Node<E> ant = sigu.prev();
         Node<E> newNode = new Node<>(value, ant, sigu);
@@ -42,88 +66,145 @@ public class LinkedList<E> {
         if (ant == null)
             first = newNode;
         else
-            ant.setNext(newNode);;
+            ant.setNext(newNode);
+        ;
         size++;
     }
 
     // ADD METHODS.
-    public void add(E value){
+
+    /**
+     * Metodo para agregar un valor a la lista.
+     * 
+     * @param value Valor para agregar.
+     */
+    public void add(E value) {
         linkLast(value);
     }
-    public void addFirst(E value){
+
+    /**
+     * Metodo para agregar un valor al comienzo de la lista.
+     * 
+     * @param value Valor o dato nuevo
+     */
+    public void addFirst(E value) {
         linkFirst(value);
     }
-    public void addLast(E value){
+
+    /**
+     * Metodo para agregar un valor al final de la lista.
+     * 
+     * @param value Valor o dato nuevo
+     */
+    public void addLast(E value) {
         linkLast(value);
     }
-    public void add (int index, E value){
 
-        if (index == size){
+    /**
+     * Metodo para agregar un dato nuevo en una posicion en especifico.
+     * 
+     * @param index Posicion donde se quiere agregar.
+     * @param value Dato que quiere agregar.
+     */
+    public void add(int index, E value) {
+
+        if (index == size) {
             linkLast(value);
-        }
-        else{
+        } else {
             linkBefore(value, searchNode(index));
         }
-        
+
     }
-    
+
     // GET METHODS
-    public E getFirst(){
+
+    /**
+     * Metodo para obtener el valor del primer nodo.
+     * 
+     * @return Valor del dato guardado en el primer nodo.
+     */
+    public E getFirst() {
         return first.data();
     }
-   
-    public E getLast(){
-        return last.data();
-    } 
-    
-    public int size(){
-        return size;
-    } 
 
+    /**
+     * Metodo para obtener el valor del ultimo nodo.
+     * 
+     * @return Valor del ultimo nodo.
+     */
+    public E getLast() {
+        return last.data();
+    }
+
+    /**
+     * Metodo para obtener el tamaño de la lista enlazada.
+     * 
+     * @return Tamaño de la lista enlazada
+     */
+    public int size() {
+        return size;
+    }
+
+    /**
+     * Metodo para buscar un nodo por posicion.
+     * 
+     * @param index Posicion del nodo que se quiere obtener.
+     * @return Nodo correspondiente a la posicion.
+     */
     private Node<E> searchNode(int index) {
-        
-        if (index >=0 && index < this.size){
+
+        if (index >= 0 && index < this.size) {
             Node<E> x = first;
             for (int i = 0; i < index; i++)
                 x = x.next();
             return x;
-        }else if ( index >= -size &&  index <= -1){
+        } else if (index >= -size && index <= -1) {
             Node<E> x = last;
-            for (int i = -1; i > index ; i--){
+            for (int i = -1; i > index; i--) {
                 x = x.prev();
             }
             return x;
-        }else{
-            throw new IndexOutOfBoundsException("Index: "+index+", Size: "+size);
+        } else {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + size);
         }
     }
 
-
-    public E get(int index){
+    /**
+     * Metodo para obtener el valor del nodo de cierta posicion.
+     * 
+     * @param index Posicion del nodo.
+     * @return Valor almacenado en el nodo.
+     */
+    public E get(int index) {
         return searchNode(index).data();
     }
 
-
     // REMOVE
 
-    private E unLink(Node<E> node){
+    /**
+     * Metodo para borrar el enlace de un nodo de los demas.
+     * 
+     * @param node Nodo del que se quitaran los enlaces.
+     * @return Dato dentro del nodo.
+     */
+    private E unLink(Node<E> node) {
         E data = node.data();
         Node<E> prev = node.prev();
         Node<E> next = node.next();
         node.setData(null);
 
-        // First 
-        if(prev == null){
+        // First
+        if (prev == null) {
             first = next;
-        }else{
+        } else {
             prev.setNext(next);
             node.setPrev(null);
         }
 
         // Last
-        if(next == null){
+        if (next == null) {
             last = prev;
-        }else{
+        } else {
             next.setPrev(prev);
             node.setNext(null);
         }
@@ -131,10 +212,15 @@ public class LinkedList<E> {
         return data;
     }
 
-    public E remove(int index){
+    /**
+     * Metodo para remover un nodo.
+     * 
+     * @param index Indice del nodo a remover.
+     * @return valor del nodo removido.
+     */
+    public E remove(int index) {
         Node<E> dead = searchNode(index);
         return unLink(dead);
     }
-
     
 }

@@ -56,7 +56,7 @@ public class Calculator {
 
 	/**
 	 * Metodo que cambia la ruta.
-	 * @param ruta
+	 * @param ruta Nueva ruta del archivo a leer.
 	 */
 	public void cambiarRuta(String ruta) {
 		this.ruta = ruta;
@@ -88,7 +88,7 @@ public class Calculator {
 	}
 
 	/**
-	 * Metodo que pregunta en consola la dirección del archivo donde se encuantran los datos e informa el resultado.
+	 * Metodo que pregunta en consola la direccion del archivo donde se encuantran los datos e informa el resultado.
 	 */
 	public void preguntar() {
 		System.out.print ("Por favor introduzca la direccion del archivo con los datos: ");
