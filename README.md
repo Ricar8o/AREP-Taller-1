@@ -31,7 +31,7 @@ Desviación estándar
 ![mean](img/deviation.jpg)
 
 
-El enunciado del ejercicio ya nos da dos tablas con información, una con los datos y otra con los resultados de la media y la desviación estándar. Los datos de la tabla 1 se encuentran en la carpeta [data](data) del repositorio y el resultado que da este programa puede observarlo en la sección de [ejemplos](##Ejemplos) y compararlo con el resultado en la tabla 2.
+El enunciado del ejercicio ya nos da dos tablas con información, una con los datos y otra con los resultados de la media y la desviación estándar. Los datos de la tabla 1 se encuentran en la carpeta [data](data) del repositorio y el resultado que da este programa puede observarlo en la sección de [ejemplos](#Ejemplos) y compararlo con el resultado en la tabla 2.
 
 ![tabla1](img/tabla1.jpg)
 ![tabla2](img/tabla2.jpg)
