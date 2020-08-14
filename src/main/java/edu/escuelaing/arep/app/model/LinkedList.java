@@ -222,5 +222,21 @@ public class LinkedList<E> {
         Node<E> dead = searchNode(index);
         return unLink(dead);
     }
+
+    /**
+     * Retorna la lista enlazada como cadena
+     * @return La la informacion de la lista como cadena.
+     */
+	public String toString(){
+        String lista = "[";
+        Node<E> nodo = first;
+        for (int i = 0; i < size-1; i++){
+            lista += nodo.data() + "," ;
+            nodo = nodo.next();
+        }
+        lista += last.data();
+        lista += "]";
+		return lista;
+	}
     
 }

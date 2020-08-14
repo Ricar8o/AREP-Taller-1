@@ -66,7 +66,7 @@ public class Calculator {
 	 * Metodo que lee los datos numericos de un archivo y los guarda en la lista.
 	 * @throws IOException En caso de que el archivo no exista o se genere un error al leerlo.
 	 */
-	public void leerDatos() throws IOException {
+	public void leerDatos() throws IOException, NumberFormatException{
 		datos = new LinkedList<Double>();
 		BufferedReader br = new BufferedReader(new FileReader(ruta));
 		String linea;
@@ -99,11 +99,14 @@ public class Calculator {
 		try {
 			leerDatos();
 			calcular();
+		} catch (NumberFormatException e) {
+			System.out.println("El archivo: "+ ruta + " tiene un dato que no pudo ser leido como numero | " + e.getMessage());
 		} catch (FileNotFoundException e) {
 			System.out.println("El archivo: "+ ruta + " no existe");
 		} catch (IOException e) {
 			System.out.println("El archivo: "+ ruta + " no pudo ser leido.");
 		}
+		//System.out.println(this.datos);
 		
 	}
 
